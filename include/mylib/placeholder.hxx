@@ -30,7 +30,7 @@ public:
     static_assert(size > 0);
 
     // it will print the required size of the underying type in case of error
-    actual_size<sizeof(value_type)>();
+    print_actual_size<sizeof(value_type)>();
   }
 
   basic_placeholder(const basic_placeholder& other) noexcept(
@@ -89,7 +89,7 @@ public:
   }
 
 private:
-  template <std::size_t actual_size> constexpr void actual_size()
+  template <std::size_t actual_size> constexpr void print_actual_size()
   {
     static_assert(size == actual_size, "The size of underlying type does \
         not match the expected size.");
