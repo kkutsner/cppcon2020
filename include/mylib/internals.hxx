@@ -10,4 +10,4 @@
 
 class sql_processor;
 using sql_processor_placeholder =
-  placeholder<sql_processor, details::x86_windows_size{44}, details::x64_windows_size{72}>;
+  placeholder<sql_processor, details::x86_windows_size{44}, details::x64_windows_size{56}>;
