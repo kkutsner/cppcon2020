@@ -1,0 +1,26 @@
+language: cpp
+compiler: clang
+
+branches:
+    only:
+        - master
+
+addons:
+  apt:
+    packages:
+      - catch2
+      
+matrix:
+  include:
+    - os: linux
+      env:
+    - os: osx
+      env:
+    - os: windows
+      env:
+
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - cmake --build .

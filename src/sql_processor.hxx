@@ -7,9 +7,9 @@
 class sql_processor
 {
 public:
-    void execute(const std::string &sql);
+  void execute(const std::string& sql);
 
 private:
-    std::string m_context;
-    std::vector<std::string> m_array;
+  std::string m_context;
+  std::vector<std::string> m_array;
 };
