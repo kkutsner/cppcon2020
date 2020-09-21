@@ -47,7 +47,7 @@ public:
   {
     if (&other != this)
     {
-      (*m_ptr) = *other.m_ptr;
+      (*this->m_ptr) = *other.m_ptr;
       // m_ptr itself should not change
     }
     return *this;
@@ -58,7 +58,7 @@ public:
   {
     if (&other != this)
     {
-      (*m_ptr) = std::move(*other.m_ptr);
+      (*this->m_ptr) = std::move(*other.m_ptr);
       // m_ptr itself should not change
     }
     return *this;
@@ -66,22 +66,22 @@ public:
 
   ~basic_placeholder() noexcept
   {
-    (*m_ptr).~value_type();
+    (*this->m_ptr).~value_type();
   }
 
   // Ideally the operators below must be explicit, but does it make sense in this particular case
   operator value_type&() noexcept
   {
-    return *m_ptr;
+    return *this->m_ptr;
   }
   operator const value_type&() const noexcept
   {
-    return *m_ptr;
+    return *this->m_ptr;
   }
   // I really miss overload dot operator beause the operators below would not be neede
   opaque_type operator->() noexcept
   {
-    return m_ptr;
+    return this->m_ptr;
   }
   const_opaque_type operator->() const noexcept
   {
