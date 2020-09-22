@@ -6,6 +6,20 @@
 #include <type_traits>
 
 namespace details {
+
+// Helper traits that let examine current build configuration. Whould be cool if there are some
+// standard heplers can be used instead of guessing using old fashioned preprocessor. Also, there
+// should be potentially more helpers to distinguish different platforms.
+#if defined(DEBUG) || defined(_DEBUG)
+static constexpr auto debug = true;
+#else
+static constexpr auto debug = false;
+#endif
+
+static constexpr auto release = !debug;
+static constexpr auto x86 = sizeof(std::size_t) == 4;
+static constexpr auto x64 = sizeof(std::size_t) == 8;
+
 template <typename type_t> constexpr auto is_valid_type()
 {
   const auto is_reference = std::is_reference_v<type_t>;
